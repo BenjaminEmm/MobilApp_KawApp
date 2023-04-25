@@ -1,0 +1,12 @@
+{
+    "createdAt": "2023-02-20T00:25:44.329Z",
+    "name": "Peter Crona",
+    "details": {
+        "price": "85.00",
+        "description": "The Football Is Good For Training And Recreational Purposes",
+        "color": "green"
+    },
+    "stock": 29758,
+    "id": "7",
+    "orderId": "7"
+}
