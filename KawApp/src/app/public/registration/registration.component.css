@@ -1,0 +1,75 @@
+#registrationComponent {
+    width: 100%;
+    min-height: 100vh;
+
+    background-image: url('src/assets/img/bg-2.jpg');
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 3rem 1rem;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form .form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+form .form-field label {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--primary-color);
+    color: var(--primary-bg-color);
+    border-radius: 50%;
+    margin: 1.6px;
+}
+
+form .form-field label .label-icon { 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form .form-field label .label-text { 
+    display: none;
+}
+
+form .form-field input {
+    padding-left: 3rem;
+}
+
+form .form-field small {
+    padding-left: 3rem;
+}
+
+form .form-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+form .form-footer .btn {
+    background-color: var(--primary-text-color);
+    color: var(--secondary-text-color);
+    border: 1px solid var(--primary-text-color);
+}
+
+form .form-footer .btn-outline {
+    background-color: transparent;
+    color: var(--primary-text-color);
+    border: 1px solid var(--primary-text-color);
+}

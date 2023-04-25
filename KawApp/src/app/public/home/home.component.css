@@ -1,0 +1,38 @@
+#homeComponent {
+    width: 100%;
+    height: 100vh;
+
+    background-image: url('src/assets/img/bg-1.png');
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainBox,
+.footerBox {
+    width: 100%;
+
+    margin-top: auto;
+    margin-bottom: 0;
+
+    padding: 1rem;
+}
+
+.mainBox figure {
+    margin: 0 auto;
+    margin-bottom: 0.5rem;
+}
+
+.mainBox h1,
+.mainBox p {
+    color: var(--secondary-text-color);
+    text-align: center;
+}
+
+.footerBox {
+    display: flex;
+    justify-content: space-between;
+}
