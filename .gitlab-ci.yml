@@ -2,12 +2,19 @@ image: node:18.12.0-bullseye
 
 stages:
 - setup
+- build
 - test
 
 install:
   stage: setup
   script:
     - npm ci
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - ng build
 
 unit_test:
   stage: test
@@ -18,4 +25,4 @@ unit_test:
     - export CHROME_BIN=/usr/bin/google-chrome
   script:
     - npm ci
-    - npm run test -- --no-watch --browser=ChromeHeadlessCI
+    - npm run test -- --no-watch --browsers=ChromeHeadlessCI
