@@ -23,6 +23,7 @@ unit_test:
     - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - apt install -y ./google-chrome*.deb;
     - export CHROME_BIN=/usr/bin/google-chrome
+    - npm update
   script:
     - npm ci
-    - npm run test -- --no-watch --browsers=ChromeHeadlessCI
+    - npm run test -- --no-watch --browsers=ChromeHeadless
