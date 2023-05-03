@@ -14,7 +14,7 @@ build:
   stage: build
   script:
     - npm ci
-    - ng build
+    - npm run build
 
 unit_test:
   stage: test
