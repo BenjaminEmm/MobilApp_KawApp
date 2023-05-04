@@ -1,4 +1,4 @@
-#homeComponent {
+#home-section {
     width: 100%;
     height: 100vh;
 
@@ -11,8 +11,8 @@
     justify-content: center;
 }
 
-.mainBox,
-.footerBox {
+#home-section #home-section-body,
+#home-section #home-section-footer {
     width: 100%;
 
     margin-top: auto;
@@ -21,18 +21,18 @@
     padding: 1rem;
 }
 
-.mainBox figure {
+#home-section #home-section-body figure {
     margin: 0 auto;
     margin-bottom: 0.5rem;
 }
 
-.mainBox h1,
-.mainBox p {
+#home-section #home-section-body h1,
+#home-section #home-section-body p {
     color: var(--secondary-text-color);
     text-align: center;
 }
 
-.footerBox {
+#home-section #home-section-footer {
     display: flex;
     justify-content: space-between;
 }
