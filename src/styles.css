@@ -49,6 +49,12 @@ h1 {
     line-height: 1;
 }
 
+hr {
+    border: none;
+    border-bottom: 1px solid rgba(var(--rgb-color--off-white), 0.5);
+    margin: 0.5rem 0;
+}
+
 p {
     line-height: 1.5;
 }
@@ -125,4 +131,8 @@ a {
 .bg-shy-moment {
     background-color:  var(--hex-color--shy-moment);
     color: var(--hex-color--off-white);
+}
+
+.bg-green-darner-tail {
+    background-color: var(--green-darner-tail);
 }

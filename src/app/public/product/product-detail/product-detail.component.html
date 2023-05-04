@@ -1,1 +1,104 @@
-<p>product-detail works!</p>
+<section id="product-detail-section">
+
+    <div id="product-detail-section-header">
+
+        <h1 class="knewave">{{ product.name }}</h1>
+
+        <hr />
+
+        <div class="coffee-maker-picture-wrapper">
+
+            <img src="https://www.senya.fr/wp-content/uploads/2021/07/CM008-9.jpg" class="coffee-maker-picture"
+                alt="Machine à café">
+
+            <a [routerLink]="['/products/', product.id, 'ar']" class="btn btn-rounded bg-shy-moment">
+                <i class="fa-solid fa-vr-cardboard"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+    <hr />
+
+    <div id="product-detail-section-body">
+        <div class="cart-box">
+            <div class="quantity-box">
+                <button (click)="removeOne()" [disabled]="quantity <= 0" type="button" class="btn btn-rounded"><i
+                        class="fa-solid fa-minus"></i></button>
+                <p>
+                    <small class="livvic">Quantité :</small> <br />
+                    <span>{{ quantity }}</span>
+                </p>
+                <button (click)="addOne()" [disabled]="quantity >= product.stock" type="button"
+                    class="btn btn-rounded"><i class="fa-solid fa-plus"></i></button>
+            </div>
+
+            <div class="action-box">
+                <button *ngIf="getProductQuantityFromCart() < quantity" (click)="updateCart()" type="button"
+                    class="btn">
+                    <i class="fa-solid fa-cart-plus"></i>
+                    <span class="livvic">&nbsp;Ajouter au panier</span>
+                </button>
+
+                <button *ngIf="getProductQuantityFromCart() > quantity" (click)="updateCart()" type="button"
+                    class="btn">
+                    <i class="fa-solid fa-cart-plus"></i>
+                    <span class="livvic">&nbsp;Retirer du panier</span>
+                </button>
+            </div>
+
+            <div class="alert" [ngClass]="{ 'hidden' : getProductQuantityFromCart() == 0 }">
+                <p>{{ product.name }} (x{{ getProductQuantityFromCart() }}) ajouté au panier!</p>
+            </div>
+
+            <div *ngIf="product.stock == 0" class="out-of-stock">
+                Rupture de stock
+            </div>
+        </div>
+
+        <hr />
+
+        <table>
+            <tr>
+                <th class="livvic">Prix</th>
+                <th class="livvic">Couleur</th>
+                <th class="livvic">Stock</th>
+            </tr>
+            <tr>
+                <td class="livvic">{{ product.details.price }}&nbsp;€</td>
+                <td class="livvic">{{ product.details.color }}</td>
+                <td class="livvic">{{ product.stock }}</td>
+            </tr>
+        </table>
+
+        <hr />
+
+        <p class="livvic">{{ product.details.description }}</p>
+    </div>
+
+    <hr />
+
+    <div id="product-detail-section-footer">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a [routerLink]="['/products/', previousId]" class="btn btn-rounded">
+                    <i class="fa-solid fa-hand-point-left"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a [routerLink]="['/products/']" class="btn btn-rounded">
+                    <i class="fa-solid fa-bars"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a [routerLink]="['/products/', nextId]" class="btn btn-rounded">
+                    <i class="fa-solid fa-hand-point-right"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</section>
