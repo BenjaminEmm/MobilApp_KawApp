@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { CurrentUserService } from './core/auth/current-user.service';
+import { Router, NavigationEnd } from '@angular/router';
+import { NavigationService } from './shared/services/navigation.service';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +14,13 @@ export class AppComponent implements OnInit {
 
   constructor(
     private currentUserService: CurrentUserService,
+    private navigationService: NavigationService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.subscribeToRouterEvents();
+  
     if (!environment.production) this.useAppAsA('user');
   }
 
@@ -40,5 +46,16 @@ export class AppComponent implements OnInit {
     else {
       console.error(`Impossible to use the application with a default ${role}!`);
     }
+  }
+
+  private subscribeToRouterEvents(): void {
+    this.router.events.subscribe(
+      obs => {
+        if (obs instanceof NavigationEnd) {
+          // console.log(obs.url);
+          this.navigationService.setCurrentRoute(obs.url);
+        }
+      }
+    );
   }
 }
