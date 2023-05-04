@@ -12,7 +12,7 @@ export class PublicAuthGuard implements CanActivate {
     private currentUserService: CurrentUserService
   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (!this.checkToken()) {
       this.router.navigate(['/home']);
       return false;
