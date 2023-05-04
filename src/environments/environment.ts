@@ -2,29 +2,30 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const production = false;
+const useMocks = true;
 
 const uri = '';
 
-const default_admin_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlZmF1bHRfYWRtaW4iLCJpZCI6MCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTE2MjM5MDIyfQ.xAtDHzG5aXvd_XpsFmpuTRPdrG6_Sc6AYTTkqpsbvLM';
-const default_user_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlZmF1bHRfdXNlciIsImlkIjowLCJyb2xlIjoidXNlciIsImlhdCI6MTUxNjIzOTAyMn0.LND5ZJTsXAqY7WJjfhLewk5mbtzq43IoeaMgtZF0ZbI';
+const defaultAdminToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlZmF1bHRfYWRtaW4iLCJpZCI6MCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTE2MjM5MDIyfQ.xAtDHzG5aXvd_XpsFmpuTRPdrG6_Sc6AYTTkqpsbvLM';
+const defaultUserToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRlZmF1bHRfdXNlciIsImlkIjowLCJyb2xlIjoidXNlciIsImlhdCI6MTUxNjIzOTAyMn0.LND5ZJTsXAqY7WJjfhLewk5mbtzq43IoeaMgtZF0ZbI';
 
-const default_admin = {
-  token: default_admin_token,
+const defaultAdmin = {
+  token: defaultAdminToken,
   requestOptions: {
     headers: {
-      'authorization': `Bearer ${default_admin_token}`
+      'authorization': `Bearer ${defaultAdminToken}`
     }
   }
 };
 
-const default_user = {
-  token: default_user_token,
+const defaultUser = {
+  token: defaultUserToken,
   requestOptions: {
-    headers: { 'authorization': `Bearer ${default_user_token}` }
+    headers: { 'authorization': `Bearer ${defaultUserToken}` }
   }
 }
 
-export const environment = { production, uri, default_admin, default_user };
+export const environment = { production, uri, useMocks, defaultAdmin, defaultUser };
 
 /*
  * For easier debugging in development mode, you can import the following file
