@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CurrentUser } from 'src/app/shared/classes/CurrentUser';
 import { CurrentUserService } from './current-user.service';
 
 @Injectable({
@@ -17,9 +16,9 @@ export class PublicAuthGuard implements CanActivate {
     if (!this.checkToken()) {
       this.router.navigate(['/home']);
       return false;
-    } else {
-      return true;
     }
+
+    return true;
   }
 
   private checkToken(): boolean {
