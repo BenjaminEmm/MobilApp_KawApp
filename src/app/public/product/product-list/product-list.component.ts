@@ -22,14 +22,14 @@ export class ProductListComponent implements OnInit {
   }
 
   private loadData(): void {
-    !environment.production ? this.getMocks() : this.getProducts();
+    environment?.useMocks ? this.getProductsFromMocks() : this.getProductsFromAPI();
   }
 
-  private getMocks(): void {
-    this.products = this.mockService.getProductMock();
+  private getProductsFromMocks(): void {
+    this.products = this.mockService.getAllProducts();
   }
 
-  private getProducts(): void {
+  private getProductsFromAPI(): void {
     // todo: call API /products
     // this.productService.getAll()
     //   .subscribe(res => {
