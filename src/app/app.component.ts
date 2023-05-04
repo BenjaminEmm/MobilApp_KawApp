@@ -32,13 +32,13 @@ export class AppComponent implements OnInit {
     if (!environment.production) {
       switch (role) {
         case 'admin':
-          this.currentUserService.save(environment.default_admin.token);
+          this.currentUserService.save(environment.defaultAdmin.token);
           break;
         case 'user':
-          this.currentUserService.save(environment.default_user.token);
+          this.currentUserService.save(environment.defaultUser.token);
           break;
         default:
-          this.currentUserService.save(environment.default_user.token);
+          this.currentUserService.save(environment.defaultUser.token);
           break;
       }
       console.info('You use the application with a default user:', this.currentUserService.currentUser);
