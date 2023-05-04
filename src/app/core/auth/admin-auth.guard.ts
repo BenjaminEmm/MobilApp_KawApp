@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { Observable } from "rxjs";
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
 import { CurrentUserService } from "./current-user.service";
 
 @Injectable({
@@ -12,7 +11,7 @@ export class AdminAuthGuard implements CanActivate {
         private currentUserService: CurrentUserService
     ) { }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         if (!this.checkToken() || !this.checkRole()) {
             this.router.navigate(['/home']);
             return false;
