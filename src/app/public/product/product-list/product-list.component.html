@@ -1,1 +1,38 @@
-<p>product-list works!</p>
+<section id="product-list-section">
+
+    <div id="product-list-section-header">
+
+        <h1 class="knewave">
+            <figure class="logo-thumb"><img src="./assets/img/logo.png" alt="Logo"></figure>
+            &nbsp;Nos produits...
+            <div class="logo-thumb"></div>
+        </h1>
+
+    </div>
+
+    <ul id="product-list-section-body" class="list">
+
+        <li *ngFor="let product of products; index as i;" class="item">
+
+            <h2 class="knewave">
+                <a [routerLink]="['/products/', product.id]">{{ product.name }}</a>
+            </h2>
+
+            <p class="livvic">{{ product.details.description }}</p>
+
+            <div class="btn-list">
+                <a [routerLink]="['/products/', product.id]" class="btn">
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    &nbsp;En savoir plus...
+                </a>
+
+                <a [routerLink]="['/products/', product.id, 'ar']" class="btn bg-shy-moment">
+                    <i class="fa-solid fa-vr-cardboard"></i>
+                    &nbsp;Visualiser le produit en <abbr title="Réalité Augmentée">R.A.</abbr>
+                </a>
+            </div>
+        </li>
+
+    </ul>
+
+</section>
