@@ -9,7 +9,12 @@ export class MockService {
 
   constructor() { }
 
-  public getProductMock() {
+  public getAllProducts() {
     return productsMock.map((mock: any) => new ProductModel(mock));;
+  }
+
+  public getProductById(id: number): ProductModel | null {
+    const args = productsMock.find(product => parseInt(product.id) == id);
+    return args ? new ProductModel(args) : null;
   }
 }
