@@ -26,4 +26,4 @@ unit_test:
     - npm update
   script:
     - npm ci
-    - npm run test -- --no-watch --browsers=ChromeHeadless --disable-gpu --no-sandbox
+    - npm run test --no-watch --browsers=ChromeHeadlessCI
