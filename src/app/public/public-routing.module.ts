@@ -11,6 +11,7 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
 import { ProductARComponent } from './product/product-ar/product-ar.component';
 import { ProductARSceneComponent } from './product/product-ar-scene/product-ar-scene.component';
 import { CartComponent } from './cart/cart.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const publicRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -22,6 +23,7 @@ const publicRoutes: Routes = [
     { path: 'products/:id/ar', component: ProductARComponent, canActivate: [PublicAuthGuard] },
     { path: 'products/:id/ar-scene', component: ProductARSceneComponent, canActivate: [PublicAuthGuard] },
     { path: 'cart', component: CartComponent, canActivate: [PublicAuthGuard] },
+    { path: 'profile', component: ProfileComponent, canActivate: [PublicAuthGuard] },
     { path: '**', component: HomeComponent }
 ];
 
