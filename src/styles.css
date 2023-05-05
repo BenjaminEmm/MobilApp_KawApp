@@ -136,3 +136,14 @@ a {
 .bg-green-darner-tail {
     background-color: var(--green-darner-tail);
 }
+
+/* AR.js */
+a-scene {
+    width: 100%;
+    height: 100vh;
+}
+
+#arjsDebugUIContainer,
+.a-enter-vr.embedded {
+    display: none !important;
+}
