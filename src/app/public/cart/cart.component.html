@@ -1,0 +1,49 @@
+<section id="cart-section">
+
+    <div id="cart-section-header">
+        <h1 class="knewave">
+            <figure class="logo-thumb"><img src="./assets/img/logo.png" alt="Logo"></figure>
+            &nbsp;Votre panier
+            <div class="logo-thumb"></div>
+        </h1>
+    </div>
+
+    <div id="cart-section-body">
+        <div class="margin-auto txt-align-center" *ngIf="isEmpty()">
+            <p>Aucun article dans votre panier.</p>
+            <p><a [routerLink]="['/products']" class="txt-exodus-fruit"><ins>Retournez à nos produits.</ins></a></p>
+        </div>
+
+        <table *ngIf="!isEmpty()">
+            <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+            </tr>
+            <tr *ngFor="let item of cart; index as i;">
+                <td>
+                    <a [routerLink]="['/products', item.product.id]">{{ item.product.name }}</a>
+                </td>
+                <td>
+                    {{ item.quantity }}&nbsp;x&nbsp;{{ item.product.details.price | number: '0.2-2' }}€
+                    <br />
+                    <strong>=&nbsp;{{ item.product.details.price * item.quantity | number: '0.2-2' }}€</strong>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="cart-section-footer">
+        <table>
+            <tr>
+                <th>Total</th>
+                <td><strong>{{ getTotal() | number: '0.2-2' }}&nbsp;€</strong></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button (click)="validateTheOrder()" type="button" class="btn">Valider la commande</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</section>

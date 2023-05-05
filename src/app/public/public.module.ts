@@ -11,6 +11,7 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
 import { ProductARComponent } from './product/product-ar/product-ar.component';
 import { ProductARSceneComponent } from './product/product-ar-scene/product-ar-scene.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
         ProductListComponent,
         ProductDetailComponent,
         ProductARComponent,
-        ProductARSceneComponent
+        ProductARSceneComponent,
+        CartComponent
     ],
     imports: [
         CommonModule,
