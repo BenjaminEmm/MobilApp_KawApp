@@ -1,5 +1,5 @@
 #cart-section {
-    height: calc(100vh - 126px);
+    height: calc(100vh - (126px + 48px));
     background-image: url('src/assets/img/bg-2.jpg');
     display: flex;
     flex-direction: column;

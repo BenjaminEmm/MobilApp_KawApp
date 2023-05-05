@@ -8,14 +8,15 @@
 
 #product-detail-section {
     width: 100%;
-    height: calc(100vh - 56px);
+    height: calc(100vh - (56px + 48px));
 
     background-image: url('src/assets/img/bg-2.jpg');
     background-size: cover;
 
     padding: 1rem;
     padding-bottom: 1rem;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #product-detail-section #product-detail-section-header h1 {

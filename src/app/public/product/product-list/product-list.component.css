@@ -11,7 +11,7 @@
 
 #product-list-section #product-list-section-header {
     position: sticky;
-    top: 0;
+    top: 48px;
     left: 0;
     z-index: 998;
     width: 100%;
