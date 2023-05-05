@@ -1,3 +1,30 @@
-<header>
-    <p>header works!</p>
+<header id="header" [ngClass]="getClass()">
+    <nav class="nav-menu">
+        <ul class="nav-list" *ngIf="class != 'home-header'">
+
+            <li class="nav-item" *ngIf="!authenticatedUser()">
+                <a [routerLink]="['/home']">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+            </li>
+
+            <li class="nav-item" *ngIf="authenticatedUser()">
+                <a [routerLink]="['/products']">
+                    <i class="fa-solid fa-shop"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a [routerLink]="['/cart']">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a [routerLink]="['/profile']">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </header>

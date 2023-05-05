@@ -1,0 +1,5 @@
+export const productsMock = [
+    { "createdAt": "2023-02-20T09:57:59.008Z", "name": "Café de Julien Couraud", "details": { "price": "80.00", "description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J", "color": "indigo" }, "stock": 0, "id": "3" },
+    { "createdAt": "2023-02-20T00:52:07.409Z", "name": "Leroy Skiles", "details": { "price": "921.00", "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive", "color": "cyan" }, "stock": 90601, "id": "4" },
+    { "createdAt": "2023-02-20T01:12:28.696Z", "name": "Jacquelyn Hyatt", "details": { "price": "662.00", "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals", "color": "violet" }, "stock": 67002, "id": "5" }
+]

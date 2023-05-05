@@ -1,0 +1,142 @@
+#product-detail-section,
+#product-detail-section #product-detail-section-header,
+#product-detail-section #product-detail-section-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#product-detail-section {
+    width: 100%;
+    height: calc(100vh - (56px + 48px));
+
+    background-image: url('src/assets/img/bg-2.jpg');
+    background-size: cover;
+
+    padding: 1rem;
+    padding-bottom: 1rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#product-detail-section #product-detail-section-header h1 {
+    font-size: 2rem;
+}
+
+#product-detail-section #product-detail-section-header .coffee-maker-picture-wrapper {
+    position: relative;
+}
+
+#product-detail-section #product-detail-section-header .coffee-maker-picture-wrapper {
+    position: relative;
+}
+
+#product-detail-section #product-detail-section-header .coffee-maker-picture-wrapper .coffee-maker-picture {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#product-detail-section #product-detail-section-header .coffee-maker-picture-wrapper .btn {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    z-index: 100;
+}
+
+#product-detail-section #product-detail-section-body .cart-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+}
+
+#product-detail-section #product-detail-section-body .cart-box .quantity-box .btn,
+#product-detail-section #product-detail-section-body .cart-box .action-box .btn {
+    background-color: var(--primary-text-color);
+    color: #f5f5f5;
+}
+
+#product-detail-section #product-detail-section-body .cart-box .quantity-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+#product-detail-section #product-detail-section-body .cart-box .quantity-box p {
+    padding: 0.5rem;
+    flex: 1;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+#product-detail-section #product-detail-section-body .cart-box .action-box {
+    text-align: center;
+}
+
+#product-detail-section #product-detail-section-body .cart-box .action-box .btn {
+    width: 100%;
+    border-radius: 0;
+}
+
+#product-detail-section #product-detail-section-body .cart-box .alert {
+    background-color: #fff;
+    border-radius: 0.25rem;
+    margin: 0 -0.5rem;
+    overflow: hidden;
+    height: 100%;
+}
+
+#product-detail-section #product-detail-section-body .cart-box .alert.hidden {
+    display: none;
+}
+
+#product-detail-section #product-detail-section-body .cart-box .alert p {
+    background-color: rgba(var(--rgb-color--green-darner-tail), 0.25);
+    padding: 0.5rem 1rem;
+    text-align: center;
+    color: var(--green-darner-tail);
+}
+
+#product-detail-section #product-detail-section-body .cart-box .out-of-stock {
+    position: absolute;
+    left: -20%;
+    top: 40%;
+    width: calc(150%);
+    margin: 0 -1rem;
+    text-align: center;
+    background-color: yellow;
+    transform: rotate(-10deg);
+    text-transform: uppercase;
+}
+
+#product-detail-section #product-detail-section-body table {
+    width: 100%;
+}
+
+#product-detail-section #product-detail-section-body table tr {
+    border-collapse: none;
+}
+
+#product-detail-section #product-detail-section-body table tr th,
+#product-detail-section #product-detail-section-body table tr td {
+    text-align: center;
+    width: 33%;
+}
+
+#product-detail-section-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+#product-detail-section-footer .nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: #f5f5f5;
+}
