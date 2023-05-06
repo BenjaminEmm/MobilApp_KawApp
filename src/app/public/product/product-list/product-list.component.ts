@@ -30,10 +30,9 @@ export class ProductListComponent implements OnInit {
   }
 
   private getProductsFromAPI(): void {
-    // todo: call API /products
-    // this.productService.getAll()
-    //   .subscribe(res => {
-    //     this.products = res;
-    //   })
+    this.productService.getAll()
+      .subscribe(res => {
+        this.products = res;
+      })
   }
 }

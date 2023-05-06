@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -16,19 +16,49 @@ export class CustomerService {
     private httpClient: HttpClient,
   ) { }
 
-  public getAll(): Observable<CustomerModel[]> {
-    return this.httpClient.get<CustomerModel>(`${env.uri}/customers/`)
+  create(data: CustomerModel): Observable<CustomerModel> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = JSON.stringify(data);
+    const options = { headers };
+    return this.httpClient.post<CustomerModel>(`${env.uri.api.crm}/Clients`, body, options)
       .pipe(
-        map((response: any) => response.map((customer: any) => new CustomerModel(customer))),
-        catchError(this.errorService.handleError('/customers/:id/', []))
+        map(res => new CustomerModel(res)),
+        catchError(this.errorService.handleError('create customer', data))
+      );
+  }
+
+  getAll(): Observable<CustomerModel[]> {
+    return this.httpClient.get<CustomerModel[]>(`${env.uri.api.crm}/Clients`)
+      .pipe(
+        map((res) => res.map((customer: any) => new CustomerModel(customer))),
+        catchError(this.errorService.handleError('get all customers', []))
+      );
+  }
+
+  getById(id: number): Observable<CustomerModel> {
+    return this.httpClient.get<CustomerModel>(`${env}/Clients/${id}`)
+      .pipe(
+        map(res => new CustomerModel(res)),
+        catchError(this.errorService.handleError('get customer by id', new CustomerModel({ id })))
       )
   }
 
-  public getById(customerId: number): Observable<CustomerModel> {
-    return this.httpClient.get<CustomerModel>(`${env.uri}/customers/${customerId}/`)
+  updateById(id: number, data: CustomerModel): Observable<CustomerModel> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = JSON.stringify(data);
+    const options = { headers };
+    return this.httpClient.put<CustomerModel>(`${env.uri.api.crm}/Clients/${id}`, body, options)
       .pipe(
-        map((response: any) => new CustomerModel(response)),
-        catchError(this.errorService.handleError('/customers/:id/', new CustomerModel()))
+        map(res => new CustomerModel(res)),
+        catchError(this.errorService.handleError('update customer by id', data))
+      )
+  }
+
+  public deleteById(id: number): Observable<number> {
+    return this.httpClient.delete<any>(`${env.uri.api.crm}/Clients/${id}`)
+      .pipe(
+        map((res: any) => id),
+        catchError(this.errorService.handleError('delete customer by id', id))
       )
   }
 }

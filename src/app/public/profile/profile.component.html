@@ -1,1 +1,39 @@
-<p>profile works!</p>
+<section id="profile-section">
+
+    <div id="profile-section-header">
+        <h1>{{ currentUser.username }}</h1>
+    </div>
+
+    <hr />
+
+    <div id="profile-section-body">
+        <details>
+            <summary>
+                <h2>Commandes</h2>
+            </summary>
+            <table id="orders-table">
+                <tr class="header-row">
+                    <td colspan="2">01/01/2023</td>
+                </tr>
+                <tr>
+                    <th>Produit 1</th>
+                    <td>
+                        <span class="opacity-0">=</span>&nbsp;10&nbsp;*&nbsp;100.00€<br />
+                        =&nbsp;1000.00€
+                    </td>
+                </tr>
+                <tr class="footer-row">
+                    <th>Total</th>
+                    <td><strong><span class="opacity-0">=</span>&nbsp;1000.00€</strong></td>
+                </tr>
+            </table>
+        </details>
+    </div>
+
+    <hr />
+
+    <div id="profile-section-footer">
+        <button class="btn btn-link" type="button" (click)="logout()">Deconnexion</button>
+    </div>
+
+</section>

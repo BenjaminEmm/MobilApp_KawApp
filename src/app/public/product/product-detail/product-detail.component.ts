@@ -5,6 +5,7 @@ import { ProductModel } from 'src/app/shared/models/product.model';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { MockService } from 'src/app/shared/services/mock.service';
 import { NavigationService } from 'src/app/shared/services/navigation.service';
+import { ProductService } from 'src/app/shared/services/product.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -27,16 +28,17 @@ export class ProductDetailComponent implements OnInit {
     private cartService: CartService,
     private mockService: MockService,
     private navigationService: NavigationService,
+    private productService: ProductService,
     private route: ActivatedRoute,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.fetchData();
     this.subscribeToCurrentRoute();
+    this.loadData();
   }
 
-  private fetchData(): void {
+  private loadData(): void {
     this.fetchProductIdFromRouteParams();
     this.fetchProductData();
     this.fetchProductQuantityFromCart();
@@ -49,7 +51,7 @@ export class ProductDetailComponent implements OnInit {
     this.subscriptionOfCurrentRoute = this.navigationService.currentRoute.subscribe(
       observer => {
         this._currentRoute = observer;
-        this.fetchData();
+        this.loadData();
       }
     )
   }
@@ -70,10 +72,10 @@ export class ProductDetailComponent implements OnInit {
         this.router.navigate(['/products']).then(() => console.error(`No product found with id ${this.productId}`));
 
     } else {
-      /* Todo: call productService.getById */
-      // this.productService.getById(id).subscribe(
-      //   (response: ProductModel) => this.product = response
-      // )
+      this.productService.getById(this.productId).subscribe(
+        (response: ProductModel) => this.product = response,
+        err => this.router.navigate(['/products']).then(() => console.error(`No product found with id ${this.productId}`))
+      )
     }
   }
 
