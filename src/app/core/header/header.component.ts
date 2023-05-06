@@ -36,7 +36,13 @@ export class HeaderComponent implements OnInit {
   private updateHeaderByRoute(): void {
     this.class = 'default-header';
 
-    if (this._currentRoute === '/home' || this._currentRoute.endsWith('/ar-scene')) {
+    const theHeaderMustBeHhidden = [
+      this._currentRoute === '/home',
+      this._currentRoute === '/authentication',
+      this._currentRoute.endsWith('/ar-scene'),
+    ].includes(true);
+
+    if (theHeaderMustBeHhidden) {
       this.class = 'hidden';
     }
   }
