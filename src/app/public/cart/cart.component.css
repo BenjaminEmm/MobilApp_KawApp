@@ -24,6 +24,13 @@
     justify-content: space-between;
 }
 
+#cart-section #cart-section-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
 #cart-section #cart-section-body table {
     width: 100%;
     padding: 1rem;
