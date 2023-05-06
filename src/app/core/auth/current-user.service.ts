@@ -39,5 +39,10 @@ export class CurrentUserService {
   public reset(): void {
     this.currentUser = new CurrentUser();
     localStorage.removeItem('token');
+    localStorage.removeItem('cart');
+  }
+
+  public isLogged(): boolean {
+    return this.currentUser.getToken() ? true : false;
   }
 }
