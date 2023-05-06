@@ -1,5 +1,39 @@
-<section id="authComponent">
-    <div class="QRcard bg-pink">
+<section id="auth-section">
+
+    <form id="auth-form" class="bg-coral-red" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+
+        <h1 class="knewave">Connexion</h1>
+
+        <hr />
+        
+        <div class="form-field">
+            <label for="email">
+                <span class="label-icon"><i class="fa-solid fa-at"></i></span>
+                <span class="label-text">Email *</span>
+            </label>
+            <input type="email" name="email" id="email" placeholder="Adresse mail" />
+        </div>
+        
+        <div class="form-field">
+            <label for="password">
+                <span class="label-icon"><i class="fa-solid fa-key"></i></span>
+                <span class="label-text">Mot de passe *</span>
+            </label>
+            <input type="password" name="password" id="password" placeholder="Mot de passe" />
+        </div>
+
+        <hr />
+        
+        <div class="form-footer">
+            <a routerLink="/home" class="btn bg-transparent txt-off-white border-off-white">Retour</a>
+            <button type="submit" class="btn bg-white-off txt-coral-red" (ngClick)="onSubmit()">Se connecter</button>
+        </div>
+
+    </form>
+
+
+
+    <!-- <div class="QRcard bg-pink">
         <h1 class="knewave">Scannez-moi</h1>
 
         <figure class="qr-code">
@@ -9,5 +43,5 @@
         <p class="livvic">
             Veuillez scanner votre QR code avec notre revendeur pour accéder à une expérience d'achat rapide et pratique.
         </p>
-    </div>
+    </div> -->
 </section>

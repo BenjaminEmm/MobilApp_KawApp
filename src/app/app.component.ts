@@ -20,32 +20,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscribeToRouterEvents();
-  
-    if (!environment.production) this.useAppAsA('user');
-  }
-
-  /**
-   * Allows you to use the application as a default user or default admin.
-   * @param {string} role The user role. Can be `'user'` or `'admin'`.
-   */
-  private useAppAsA(role: string): void {
-    if (!environment.production) {
-      switch (role) {
-        case 'admin':
-          this.currentUserService.save(environment.defaultAdmin.token);
-          break;
-        case 'user':
-          this.currentUserService.save(environment.defaultUser.token);
-          break;
-        default:
-          this.currentUserService.save(environment.defaultUser.token);
-          break;
-      }
-      console.info('You use the application with a default user:', this.currentUserService.currentUser);
-    }
-    else {
-      console.error(`Impossible to use the application with a default ${role}!`);
-    }
+    this.currentUserService.load();
   }
 
   private subscribeToRouterEvents(): void {

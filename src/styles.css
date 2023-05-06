@@ -67,7 +67,7 @@ a {
 
 .btn {
     border-radius: 2rem;
-    border: none;
+    border: 1px solid transparent;
     background-color: var(--hex-color--coral-red);
     color: var(--hex-color--off-white);
     display: inline-block;
@@ -84,6 +84,15 @@ a {
     align-items: center;
     justify-content: center;
     line-height: 1;
+}
+
+.btn.btn-link {
+    background-color: transparent;
+    color: var(--hex-color--exodus-fruit);
+    text-decoration: underline;
+    padding: 0;
+    border: none;
+    border-radius: 0;
 }
 
 .btn:disabled {
@@ -123,18 +132,51 @@ a {
     font-family: 'Livvic', sans-serif;
 }
 
+/* background-color*/
+
+.bg-white-off {
+    background-color: var(--hex-color--off-white);
+    color: var(--hex-color--coffee-brown);
+}
+
 .bg-coral-red {
     background-color: var(--hex-color--coral-red);
     color: var(--hex-color--off-white);
 }
 
 .bg-shy-moment {
-    background-color:  var(--hex-color--shy-moment);
+    background-color: var(--hex-color--shy-moment);
     color: var(--hex-color--off-white);
 }
 
 .bg-green-darner-tail {
     background-color: var(--green-darner-tail);
+}
+
+.bg-transparent {
+    background-color: transparent;
+}
+
+/* color */
+.txt-coral-red {
+    color: var(--hex-color--coral-red);
+}
+
+.txt-off-white {
+    color: var(--hex-color--off-white);
+}
+
+/* border */
+.border-off-white {
+    border-color: var(--hex-color--off-white);
+}
+
+.margin-auto {
+    margin: auto;
+}
+
+.opacity-0 {
+    opacity: 0;
 }
 
 /* AR.js */
