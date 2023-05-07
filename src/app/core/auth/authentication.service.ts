@@ -22,7 +22,7 @@ export class AuthenticationService {
 
   public signIn(userCredentials: UserCredentials): any | Observable<any> {
 
-    if (!environment.uri) {
+    if (!environment.production) {
       this.useAppAsA('user');
       return environment.defaultUser.token;
 
