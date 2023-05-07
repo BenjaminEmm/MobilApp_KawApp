@@ -90,26 +90,43 @@ export class ProductDetailComponent implements OnInit {
   }
 
   private fetchPreviousId(): void {
+    const getPreviousId = (data: ProductModel[]): number => {
+      let previousIndex = data.findIndex(product => product.id === this.productId) - 1;
+      if (previousIndex < 0) previousIndex = data.length - 1;
+      const previousProduct = data[previousIndex];
+      return previousProduct.id;
+    }
+
     if (environment.useMocks) {
       const mocks = this.mockService.getAllProducts();
-      let previousIndex = mocks.findIndex(product => product.id === this.productId) - 1;
-      if (previousIndex < 0) previousIndex = mocks.length - 1;
-      const previousProduct = mocks[previousIndex];
-      this.previousId = previousProduct.id;
+      this.previousId = getPreviousId(mocks);
     } else {
-      // todo: fetch previous/next id with API
+      this.productService.getAll().subscribe(
+        (data: ProductModel[]) => {
+          this.previousId = getPreviousId(data);
+        }
+      )
     }
   }
 
   private fetchNextId(): void {
+    const getNextId = (data: ProductModel[]): number => {
+      let nextIndex = data.findIndex(product => product.id === this.productId) + 1;
+      if (nextIndex > data.length - 1) nextIndex = 0;
+      const nextProduct = data[nextIndex];
+      return nextProduct.id;
+    };
+
     if (environment.useMocks) {
       const mocks = this.mockService.getAllProducts();
-      let nextIndex = mocks.findIndex(product => product.id === this.productId) + 1;
-      if (nextIndex > mocks.length - 1) nextIndex = 0;
-      const nextProduct = mocks[nextIndex];
-      this.nextId = nextProduct.id;
+      this.nextId = getNextId(mocks);
     } else {
-      // todo: fetch previous/next id with API
+      this.productService.getAll().subscribe(
+        (data: ProductModel[]) => {
+          this.nextId = getNextId(data);
+          console.log('nextId', this.nextId);
+        }
+      )
     }
   }
 
