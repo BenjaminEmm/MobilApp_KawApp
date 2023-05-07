@@ -28,6 +28,6 @@ export class ProductARComponent implements OnInit {
 
   private setIFrameSource(): void {
     this.sceneURI = `/products/${this.productId}/ar-scene`;
-    document.querySelector('#productARComponent iframe')?.setAttribute('src', this.sceneURI);
+    document.querySelector('#product-ar-section iframe')?.setAttribute('src', this.sceneURI);
   }
 }
