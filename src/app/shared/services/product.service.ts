@@ -19,7 +19,7 @@ export class ProductService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = JSON.stringify(data);
     const options = { headers };
-    return this.httpClient.post<ProductModel>(`${env.uri.api.erp}/Products`, body, options)
+    return this.httpClient.post<ProductModel>(`${env.uri.api.erp}/Produits`, body, options)
       .pipe(
         map(res => new ProductModel(res)),
         catchError(this.errorService.handleError('create product', data))
@@ -27,7 +27,7 @@ export class ProductService {
   }
 
   getAll(): Observable<ProductModel[]> {
-    return this.httpClient.get<ProductModel[]>(`${env.uri.api.erp}/Products`)
+    return this.httpClient.get<ProductModel[]>(`${env.uri.api.erp}/Produits`)
       .pipe(
         map((res) => res.map((product: any) => new ProductModel(product))),
         catchError(this.errorService.handleError('get all products', []))
@@ -35,7 +35,7 @@ export class ProductService {
   }
 
   getById(id: number): Observable<ProductModel> {
-    return this.httpClient.get<ProductModel>(`${env.uri.api.erp}/Products/${id}`)
+    return this.httpClient.get<ProductModel>(`${env.uri.api.erp}/Produits/${id}`)
       .pipe(
         map(res => new ProductModel(res)),
         catchError(this.errorService.handleError('get product by id', new ProductModel({ id })))
@@ -46,7 +46,7 @@ export class ProductService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = JSON.stringify(data);
     const options = { headers };
-    return this.httpClient.put<ProductModel>(`${env.uri.api.erp}/Products/${id}`, body, options)
+    return this.httpClient.put<ProductModel>(`${env.uri.api.erp}/Produits/${id}`, body, options)
       .pipe(
         map(res => new ProductModel(res)),
         catchError(this.errorService.handleError('update product by id', data))
@@ -54,7 +54,7 @@ export class ProductService {
   }
 
   public deleteById(id: number): Observable<number> {
-    return this.httpClient.delete<any>(`${env.uri.api.erp}/Products/${id}`)
+    return this.httpClient.delete<any>(`${env.uri.api.erp}/Produits/${id}`)
       .pipe(
         map((res: any) => id),
         catchError(this.errorService.handleError('delete product by id', id))
