@@ -23,7 +23,7 @@ export class AuthenticationService {
   public signIn(userCredentials: UserCredentials): any | Observable<any> {
 
     if (!environment.production) {
-      this.useAppAsA('user');
+      this.useAppAsA('admin');
       return environment.defaultUser.token;
 
     } else {

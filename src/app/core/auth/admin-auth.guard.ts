@@ -12,7 +12,8 @@ export class AdminAuthGuard implements CanActivate {
     ) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        if (!this.checkToken() || !this.checkRole()) {
+        const authorization = this.checkToken();
+        if (!authorization) {
             this.router.navigate(['/home']);
             return false;
         } else {
@@ -21,10 +22,11 @@ export class AdminAuthGuard implements CanActivate {
     }
 
     private checkToken(): boolean {
-        return this.currentUserService.currentUser.getToken() ? true : false;
-    }
-
-    private checkRole(): boolean {
-        return this.currentUserService.currentUser.role === "admin";
+        const token = this.currentUserService.currentUser.getToken();
+        if (!token) return false;
+        const role = this.currentUserService.currentUser.role;
+        if (!role) return false;
+        const isAdmin = role === 'admin';
+        return isAdmin;
     }
 }

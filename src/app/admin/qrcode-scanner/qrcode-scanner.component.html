@@ -1,0 +1,64 @@
+<section id="qrcode-scanner-section">
+
+    <div class="header">
+        <h1 class="knewave">Scanner de QR Code</h1>
+    </div>
+
+    <div class="body">
+        <div class="scan">
+            <!-- For camera -->
+            <ngx-scanner-qrcode #action="scanner" [config]="config" (event)="onEvent($event)"></ngx-scanner-qrcode>
+            <!-- Loading -->
+            <p class="loading" *ngIf="!action.isStart">⌛ Chargement de la caméra...</p>
+            <!-- start -->
+            <button class="btn btn-rounded" (click)="action.isStart ? action.stop() : action.start()">
+                <i *ngIf="action.isStart" class="fa-solid fa-pause"></i>
+                <i *ngIf="!action.isStart" class="fa-solid fa-play"></i>
+            </button>
+        </div>
+        <div class="res">
+            <p>
+                <strong>Résultat&nbsp;:</strong>&nbsp;
+                <span *ngIf="!qrcode">En attante de scan...</span>
+                <span *ngIf="qrcode">{{ qrcode.value }}</span>
+            </p>
+            <details *ngIf="qrcode">
+                <summary>Détails</summary>
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <td>{{ qrcode.type }}</td>
+                    </tr>
+                    <tr>
+                        <th>Type&nbsp;Name</th>
+                        <td>{{ qrcode.typeName }}</td>
+                    </tr>
+                    <tr>
+                        <th>Data</th>
+                        <td>{{ qrcode.data | json }}</td>
+                    </tr>
+                    <tr>
+                        <th>Points</th>
+                        <td>{{ qrcode.points | json }}</td>
+                    </tr>
+                    <tr>
+                        <th>Orientation</th>
+                        <td>{{ qrcode.orientation }}</td>
+                    </tr>
+                    <tr>
+                        <th>Time</th>
+                        <td>{{ qrcode.time }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cache&nbsp;Count</th>
+                        <td>{{ qrcode.cacheCount }}</td>
+                    </tr>
+                    <tr>
+                        <th>Quality</th>
+                        <td>{{ qrcode.quality }}</td>
+                    </tr>
+                </table>
+            </details>
+        </div>
+    </div>
+</section>
