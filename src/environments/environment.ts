@@ -2,7 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const production = false;
-const useMocks = false;
+const useMocks = true;
 
 const api = {
   erp: 'https://localhost:7289/api',

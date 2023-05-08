@@ -12,26 +12,31 @@
     flex-direction: column;
 }
 
-#profile-section #profile-section-body details summary h2 {
+#profile-section #profile-section-body details summary h2,
+#profile-section #profile-section-body details summary h3 {
     display: inline-block;
 }
 
-#profile-section #profile-section-body #orders-table {
+#profile-section #profile-section-body details summary h3 {
+    font-weight: normal;
+}
+
+#profile-section #profile-section-body .orders-table {
     width: 100%;
 }
 
-#profile-section #profile-section-body #orders-table tr:nth-child(even) {
+#profile-section #profile-section-body .orders-table tr:nth-child(even) {
     background-color: rgba(245, 245, 245, 0.25);
 }
 
-#profile-section #profile-section-body #orders-table tr.header-row,
-#profile-section #profile-section-body #orders-table tr.footer-row {
+#profile-section #profile-section-body .orders-table tr.header-row,
+#profile-section #profile-section-body .orders-table tr.footer-row {
     background-color: var(--hex-color--coffee-brown);
     color: var(--hex-color--off-white);
 }
 
-#profile-section #profile-section-body #orders-table tr th,
-#profile-section #profile-section-body #orders-table tr td {
+#profile-section #profile-section-body .orders-table tr th,
+#profile-section #profile-section-body .orders-table tr td {
     border-bottom: 1px solid var(--hex-color--coffee-brown);
     padding: 0.25rem 0.5rem;
     vertical-align: text-top;
@@ -39,11 +44,11 @@
     text-align: left;
 }
 
-#profile-section #profile-section-body #orders-table ul {
+#profile-section #profile-section-body .orders-table ul {
     list-style: none;
 }
 
-#profile-section #profile-section-body #orders-table .col {
+#profile-section #profile-section-body .orders-table .col {
     display: inline-block;
     width: 33.33%;
 }

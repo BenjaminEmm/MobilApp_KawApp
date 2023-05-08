@@ -36,7 +36,7 @@ export class CustomerService {
   }
 
   getById(id: number): Observable<CustomerModel> {
-    return this.httpClient.get<CustomerModel>(`${env}/Clients/${id}`)
+    return this.httpClient.get<CustomerModel>(`${env.uri.api.crm}/Clients/${id}`)
       .pipe(
         map(res => new CustomerModel(res)),
         catchError(this.errorService.handleError('get customer by id', new CustomerModel({ id })))

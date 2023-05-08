@@ -22,7 +22,7 @@ export class CustomerModel {
         this.profile = args?.profile;
         this.company = args?.company;
         this.id = parseInt(args?.id);
-        this.orders = args?.orders.map((order: any) => new OrderModel(order));
+        this.orders = args?.orders?.map((order: any) => new OrderModel(order));
     }
 }
 

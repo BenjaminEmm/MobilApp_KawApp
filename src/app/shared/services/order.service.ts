@@ -12,9 +12,7 @@ export class OrderService {
   constructor(
     private errorService: ErrorService,
     private httpClient: HttpClient,
-  ) {
-    this.getAll().subscribe(res => console.log(res));
-  }
+  ) { }
 
   public create(data: OrderModel): Observable<OrderModel> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');

@@ -11,22 +11,36 @@
             <summary>
                 <h2>Commandes</h2>
             </summary>
-            <table id="orders-table">
-                <tr class="header-row">
-                    <td colspan="2">01/01/2023</td>
-                </tr>
-                <tr>
-                    <th>Produit 1</th>
-                    <td>
-                        <span class="opacity-0">=</span>&nbsp;10&nbsp;*&nbsp;100.00€<br />
-                        =&nbsp;1000.00€
-                    </td>
-                </tr>
-                <tr class="footer-row">
-                    <th>Total</th>
-                    <td><strong><span class="opacity-0">=</span>&nbsp;1000.00€</strong></td>
-                </tr>
-            </table>
+
+            <details *ngFor="let order of getOrders()">
+                <summary>
+                    <h3>{{ order.createdAt | date : 'dd/MM/yy, hh:mm' }}</h3>
+                </summary>
+                <div class="content">
+                    <table class="orders-table">
+                        <tr class="header-row">
+                            <th>Produit</th>
+                            <th>Prix</th>
+                        </tr>
+                        <tr *ngFor="let product of order.products">
+                            <th>{{ product.name }}</th>
+                            <td>
+                                <span class="opacity-0">=</span>&nbsp;{{ product.details.price }}€&nbsp;*&nbsp;1<br />
+                                =&nbsp;{{ product.details.price }}€
+                            </td>
+                        </tr>
+                        <tr class="footer-row">
+                            <th>Total</th>
+                            <td>
+                                <strong>
+                                    <span class="opacity-0">=</span>&nbsp;
+                                    {{ getTotalByOrderId(order.id) | number:'0.2-2' }}€
+                                </strong>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </details>
         </details>
     </div>
 

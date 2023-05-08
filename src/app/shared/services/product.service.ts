@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ErrorService } from './error.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment as env } from 'src/environments/environment';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError, map, tap } from 'rxjs';
 import { ProductModel } from '../models/product.model';
 
 @Injectable({
@@ -40,6 +40,10 @@ export class ProductService {
         map(res => new ProductModel(res)),
         catchError(this.errorService.handleError('get product by id', new ProductModel({ id })))
       )
+  }
+
+  getAllByOrderId(customerId: number, orderId: number): Observable<any> {
+    return this.httpClient.get<any>(`https://615f5fb4f7254d0017068109.mockapi.io/api/v1/customers/${customerId}/orders/${orderId}/products`)
   }
 
   updateById(id: number, data: ProductModel): Observable<ProductModel> {
