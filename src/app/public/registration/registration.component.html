@@ -1,72 +1,42 @@
 <section id="registrationComponent">
 
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-
         <h1 class="knewave">
-            <figure class="logo-thumb"><img src="./assets/img/logo.png" alt="Logo"></figure>&nbsp;Inscription
+            Inscription
         </h1>
 
-        <hr/>
+        <hr />
 
         <div class="form-field">
-            <label for="username">
-                <span class="label-icon"><i class="fa-solid fa-mug-hot"></i></span>
-                <span class="label-text">Identifiant *</span>
+            <label for="email">
+                <span class="label-icon"><i class="fa-solid fa-at"></i></span>
+                <span class="label-text">Adresse e-mail *</span>
             </label>
-            <input placeholder="Identifiant *" type="text" name="username" formControlName="username" />
-            <small class="form-helper">Choisissez votre identifiant.</small>
+            <input placeholder="Adresse e-mail *" type="email" name="email" formControlName="adresseMail" />
+            <small class="form-helper">Renseignez votre adresse e-mail.</small>
         </div>
 
         <div class="form-field">
-            <label for="firstName">
-                <span class="label-icon"><i class="fa-solid fa-mug-hot"></i></span>
-                <span class="label-text">Prénom *</span>
+            <label for="password">
+                <span class="label-icon"><i class="fa-solid fa-key"></i></span>
+                <span class="label-text">Mot de passe *</span>
             </label>
-            <input placeholder="Prénom *" type="text" name="firstName" formControlName="firstName" />
-            <small class="form-helper">Renseignez votre prénom.</small>
+            <input placeholder="Mot de passe *" type="password" name="password" formControlName="password" />
+            <small class="form-helper">Choisissez un mot de passe.</small>
         </div>
 
-        <div class="form-field">
-            <label for="lastName">
-                <span class="label-icon"><i class="fa-solid fa-mug-hot"></i></span>
-                <span class="label-text">Nom *</span>
-            </label>
-            <input placeholder="Nom *" type="text" name="lastName" formControlName="lastName" />
-            <small class="form-helper">Renseignez votre nom de famille.</small>
-        </div>
-
-        <div class="form-field">
-            <label for="city">
-                <span class="label-icon"><i class="fa-solid fa-mug-hot"></i></span>
-                <span class="label-text">Ville *</span>
-            </label>
-            <input placeholder="Ville *" type="text" name="city" formControlName="city" />
-            <small class="form-helper">Renseignez votre ville.</small>
-        </div>
-
-        <div class="form-field">
-            <label for="zipcode">
-                <span class="label-icon"><i class="fa-solid fa-mug-hot"></i></span>
-                <span class="label-text">Code Postal *</span>
-            </label>
-            <input placeholder="Code Postal *" type="text" name="zipcode" formControlName="zipcode" />
-            <small class="form-helper">Renseignez votre code postal.</small>
-        </div>
-
-        <div class="form-field">
-            <label for="company">
-                <span class="label-icon"><i class="fa-solid fa-mug-hot"></i></span>
-                <span class="label-text">Société *</span>
-            </label>
-            <input placeholder="Société *" type="text" name="company" formControlName="company" />
-            <small class="form-helper">Renseignez votre société.</small>
-        </div>
-
-        <hr/>
+        <hr />
 
         <div class="form-footer">
             <a routerLink="/home" class="btn btn-outline">Annuler</a>
             <button type="submit" class="btn">S'inscrire</button>
         </div>
     </form>
+
+    <p class="alert" [ngClass]="{'show': success}">
+        <small>
+            Inscription réussie. 
+            Vous allez être rediriger vers la page de connexion dans {{ seconds }} secondes.
+        </small>
+    </p>
 </section>
