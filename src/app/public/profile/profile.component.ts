@@ -34,24 +34,14 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.customer.adresseMail = this.currentUserService.currentUser.adresseMail;
-
     this.loadData();
-
-    this.userDataForm = new FormGroup({
-      adresseMail: new FormControl(this.customer.adresseMail, [Validators.email]),
-      username: new FormControl(this.customer.username, []),
-      firstName: new FormControl(this.customer?.firstName, []),
-      lastName: new FormControl(this.customer.lastName, []),
-      companyName: new FormControl(this.customer?.company?.companyName, []),
-      postalCode: new FormControl(this.customer?.address?.postalCode, []),
-      city: new FormControl(this.customer?.address?.city, []),
-    });
   }
 
   public loadData() {
     this.customerService.getById(this.currentUserService.currentUser.id).subscribe(
       response => {
         this.customer = { ...this.customer, ...response };
+        this.updateForm();
         this.loadOrders();
       }
     )
@@ -90,7 +80,7 @@ export class ProfileComponent implements OnInit {
 
   public onSubmit(): void {
     const name = `${this.userDataForm.value.firstName} ${this.userDataForm.value.lastName}`;
-    const profile = { fistName: this.userDataForm.value.firstName, lastName: this.userDataForm.value.lastName };
+    const profile = { firstName: this.userDataForm.value.firstName, lastName: this.userDataForm.value.lastName };
     const address = { city: this.userDataForm.value.city, postalCode: this.userDataForm.value.postalCode };
     const company = { companyName: this.userDataForm.value.companyName };
 
@@ -101,9 +91,21 @@ export class ProfileComponent implements OnInit {
 
     this.customerService.updateById(id, data)
       .subscribe(res => {
-        console.log(res);
-        this.ngOnInit();
+        this.customer = { ...this.customer, ...res };
+        this.updateForm();
       });
+  }
+
+  private updateForm(): void {
+    this.userDataForm = new FormGroup({
+      adresseMail: new FormControl(this.customer.adresseMail, [Validators.email]),
+      username: new FormControl(this.customer.username, []),
+      firstName: new FormControl(this.customer?.firstName, []),
+      lastName: new FormControl(this.customer.lastName, []),
+      companyName: new FormControl(this.customer?.company?.companyName, []),
+      postalCode: new FormControl(this.customer?.address?.postalCode, []),
+      city: new FormControl(this.customer?.address?.city, []),
+    });
   }
 }
 

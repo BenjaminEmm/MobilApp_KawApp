@@ -47,7 +47,7 @@ export class CustomerService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = JSON.stringify(data);
     const options = { headers };
-    return this.httpClient.put<CustomerModel>(`${env.uri.api.crm}/Clients/${id}`, body, options)
+    return this.httpClient.put<CustomerModel>(`${env.uri.api.crm}/Clients`, body, options)
       .pipe(
         map(res => new CustomerModel(res)),
         catchError(this.errorService.handleError('update customer by id', data))
