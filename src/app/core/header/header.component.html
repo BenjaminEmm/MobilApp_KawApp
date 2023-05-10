@@ -14,13 +14,19 @@
                 </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="authenticatedUser() && !isAdmin()">
                 <a [routerLink]="['/cart']">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </a>
             </li>
 
-            <li class="nav-item">
+            <li>
+                <a [routerLink]="['/admin/qrcode-scanner']" *ngIf="isAdmin()">
+                    <i class="fa-solid fa-qrcode"></i>
+                </a>
+            </li>
+
+            <li class="nav-item" *ngIf="authenticatedUser()">
                 <a [routerLink]="['/profile']">
                     <i class="fa-solid fa-user"></i>
                 </a>

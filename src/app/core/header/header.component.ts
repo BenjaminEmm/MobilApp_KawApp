@@ -37,7 +37,9 @@ export class HeaderComponent implements OnInit {
     this.class = 'default-header';
 
     const theHeaderMustBeHhidden = [
+      this._currentRoute === '/',
       this._currentRoute === '/home',
+      this._currentRoute === '/registration',
       this._currentRoute === '/authentication',
       this._currentRoute.endsWith('/ar-scene'),
     ].includes(true);
@@ -53,5 +55,9 @@ export class HeaderComponent implements OnInit {
 
   public authenticatedUser(): boolean {
     return this.currentUserService.currentUser.getToken() ? true : false;
+  }
+
+  public isAdmin(): boolean {
+    return this.currentUserService.currentUser.role === 'admin';
   }
 }
