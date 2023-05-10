@@ -13,12 +13,9 @@ export class CurrentUserService {
 
   public load(): void {
     const token = this.currentUser.getToken();
-
-    if (!token) {
-      console.error('token not found');
-    } else {
-      const args: DecodedToken | null = this.decodeToken(token);
-      this.currentUser = new CurrentUser(args);
+    if (token) {
+      const decodedToken = this.decodeToken(token);
+      this.currentUser = new CurrentUser({ id: decodedToken?.id, adresseMail: decodedToken?.email, role: decodedToken?.role.toLowerCase() });
     }
   }
 

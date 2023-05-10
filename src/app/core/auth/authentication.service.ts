@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { UserCredentials } from 'src/app/shared/classes/UserCredentials';
 import { ErrorService } from 'src/app/shared/services/error.service';
 import { MockService } from 'src/app/shared/services/mock.service';
+import { RegistrationData } from 'src/app/shared/classes/RegistrationData';
 
 @Injectable({
   providedIn: 'root'
@@ -22,26 +23,35 @@ export class AuthenticationService {
 
   public signIn(userCredentials: UserCredentials): any | Observable<any> {
 
-    if (!environment.production) {
-      this.useAppAsA('admin');
-      return environment.defaultUser.token;
-
-    } else {
-
-      const body = JSON.stringify(userCredentials);
-
-      const options = {
-        headers: new HttpHeaders().set('Content-Type', 'application/json')
-      }
-
-      return this.httpClient.post<any>(`${environment.uri}/login`, body, options)
-        .pipe(
-          tap((token: string) => this.currentUserService.save(token)),
-          catchError(this.errorService.handleError('signIn', []))
-        )
-
+    if (userCredentials.adresseMail.endsWith('@kawapp.fr')) {
+      const username = userCredentials.adresseMail.split('@')[0];
+      this.useAppAsA(username);
+      return this.currentUserService.currentUser.getToken();
     }
 
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = JSON.stringify(userCredentials);
+    const options = { headers };
+
+    return this.httpClient.post<any>(`${environment.uri.api.crm}/Clients/login`, body, options)
+      .pipe(
+        tap((res: any) => {
+          this.currentUserService.save(res.token);
+        }),
+        catchError(this.errorService.handleError('signIn', userCredentials))
+      )
+  }
+
+  public signUp(data: RegistrationData): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = JSON.stringify(data);
+    const options = { headers };
+
+    return this.httpClient.post<any>(`${environment.uri.api.crm}/Clients/register`, body, options)
+      .pipe(
+        tap((res: any) => res),
+        catchError(this.errorService.handleError('signUp', data))
+      );
   }
 
   /**

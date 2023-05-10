@@ -10,7 +10,7 @@
             <ngx-scanner-qrcode #action="scanner" [config]="config" (event)="onEvent($event)"></ngx-scanner-qrcode>
             <!-- Loading -->
             <p class="loading" *ngIf="!action.isStart">⌛ Chargement de la caméra...</p>
-            <!-- start -->
+            <!-- start/stop -->
             <button class="btn btn-rounded" (click)="action.isStart ? action.stop() : action.start()">
                 <i *ngIf="action.isStart" class="fa-solid fa-pause"></i>
                 <i *ngIf="!action.isStart" class="fa-solid fa-play"></i>

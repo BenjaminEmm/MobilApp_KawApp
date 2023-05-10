@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(
       obs => {
         if (obs instanceof NavigationEnd) {
-          // console.log(obs.url);
           this.navigationService.setCurrentRoute(obs.url);
         }
       }

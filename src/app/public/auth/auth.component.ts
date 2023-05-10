@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent {
   public authForm = new FormGroup({
-    email: new FormControl(null, [Validators.required]),
+    adresseMail: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, [Validators.required]),
   });
 
@@ -23,16 +23,25 @@ export class AuthComponent {
   ) { }
 
   onSubmit(): void {
-    console.log('onSubmit');
     const args = this.authForm.value;
     const credentials = new UserCredentials(args);
-    this.authService.signIn(credentials)
-    // .subscribe(
-    // response => {
-    if (this.currentUserService.isLogged()) {
-      this.router.navigate(['/profile']);
+
+    if (credentials.adresseMail.endsWith('@kawapp.fr')) {
+      this.authService.signIn(credentials);
+      if (this.currentUserService.isLogged()) {
+        this.router.navigate(['/profile']);
+      }
+    } else {
+      this.authService.signIn(credentials)
+        .subscribe(
+          (res: any) => {
+            if (this.currentUserService.isLogged()) {
+              this.router.navigate(['/profile']);
+            }
+          }
+        );
     }
-    // }
-    // );
+
+
   }
 }

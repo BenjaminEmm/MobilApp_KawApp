@@ -124,7 +124,6 @@ export class ProductDetailComponent implements OnInit {
       this.productService.getAll().subscribe(
         (data: ProductModel[]) => {
           this.nextId = getNextId(data);
-          console.log('nextId', this.nextId);
         }
       )
     }
@@ -146,6 +145,5 @@ export class ProductDetailComponent implements OnInit {
 
   public updateCart(): void {
     this.cartService.updateCart(this.product, this.quantity);
-    console.log(this.cartService.cart);
   }
 }
