@@ -1,15 +1,93 @@
 <section id="profile-section">
 
     <div id="profile-section-header">
-        <h1>{{ currentUser.username }}</h1>
+        <h1>{{ customer.adresseMail }}</h1>
     </div>
 
     <hr />
 
     <div id="profile-section-body">
-        <details>
+        <details id="user-data">
             <summary>
-                <h2>Commandes</h2>
+                <div>
+                    <h2>Données personnelles</h2>
+                    <button (click)="onSubmit()" class="btn btn-rounded">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                    </button>
+                </div>
+
+            </summary>
+
+            <form [formGroup]="userDataForm">
+                <table>
+                    <tr>
+                        <th>
+                            <label for="adresseMail">E-mail</label>
+                        </th>
+                        <td>
+                            <input type="email" name="adresseMail" id="adresseMail" placeholder="Adresse mail"
+                                formControlName="adresseMail" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="username">Pseudo</label>
+                        </th>
+                        <td>
+                            <input type="email" name="username" id="username" placeholder="Pseudo"
+                                formControlName="username" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="firstName">Prénom</label>
+                        </th>
+                        <td>
+                            <input type="text" name="firstName" id="firstName" placeholder="Prénom"
+                                formControlName="firstName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="lastName">Nom</label>
+                        </th>
+                        <td>
+                            <input type="text" name="lastName" id="lastName" placeholder="Nom"
+                                formControlName="lastName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="companyName">Société</label>
+                        </th>
+                        <td>
+                            <input type="text" name="companyName" id="companyName" placeholder="Société"
+                                formControlName="companyName" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th><label for="postalCode">Code Postal</label></th>
+                        <td>
+                            <input type="text" name="postalCode" id="postalCode" placeholder="Code Postal"
+                                formControlName="postalCode" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="city">Ville</label></th>
+                        <td>
+                            <input type="text" name="city" id="city" placeholder="Ville" formControlName="city" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </details>
+
+        <hr />
+
+        <details id="order-history">
+            <summary>
+                <h2>Historique des commandes</h2>
             </summary>
 
             <details *ngFor="let order of getOrders()">
@@ -42,9 +120,10 @@
                 </div>
             </details>
         </details>
+
+        <hr />
     </div>
 
-    <hr />
 
     <div id="profile-section-footer">
         <button class="btn btn-link" type="button" (click)="logout()">Deconnexion</button>
